@@ -15,7 +15,7 @@ namespace E_CommerceWebpageApi.Controllers
         {
             this.orderService = orderService;
         }
-        [HttpGet]
+        [HttpGet("getall")]
         public List <Order> GetOrders()
         {
             return orderService.GetOrders();
@@ -52,6 +52,13 @@ namespace E_CommerceWebpageApi.Controllers
         public IActionResult RemoveProductFromOrder(int orderId, int productId)
         {
             orderService.RemoveProductFromOrder(orderId, productId);
+            return Ok();
+        }
+
+        [HttpPut("updateOrderTotalPrice")]
+        public IActionResult UpdateOrderTotalPrice(int orderId)
+        {
+            orderService.UpdateOrderTotalPrice(orderId);
             return Ok();
         }
     }
